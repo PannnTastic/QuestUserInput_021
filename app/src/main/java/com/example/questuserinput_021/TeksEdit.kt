@@ -110,7 +110,24 @@ fun FormDataDiri(modifier: Modifier){
             thickness = dimensionResource(id = R.dimen.thin_divider),
             color = Color.DarkGray
         )
-
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.LightGray),
+            modifier = Modifier
+                .height(100.dp)
+                .width(300.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(
+                        horizontal = 5.dp,
+                        vertical = 15.dp)
+            ) {
+                Text(text = "Nama : $nama", color = Color.White)
+                Text(text = "Jenis Kelamin : $jk", color = Color.White)
+                Text(text = "Alamat : $alamat", color = Color.White)
+                }
+            }
 
     }
 }
