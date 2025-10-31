@@ -83,6 +83,34 @@ fun FormDataDiri(modifier: Modifier){
                 textAlamat = it
             }
         )
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.thin_divider),
+            color = Color.DarkGray
+        )
+        Button(
+            modifier = Modifier.fillMaxWidth(fraction = 1f),
+            enabled = textAlamat.isNotEmpty(),
+            onClick = {
+                nama = textNama
+                alamat = textAlamat
+                jk = textJK
+            }
+        ) {
+            Text(text = stringResource(id = R.string.submit))
+        }
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.thin_divider),
+            color = Color.DarkGray
+        )
+
 
     }
 }
