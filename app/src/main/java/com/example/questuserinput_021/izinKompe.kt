@@ -334,7 +334,42 @@ fun FormRegistrasi(modifier: Modifier)
                 }
             }
         }
-
+        if (submitted){
+            Dialog(
+                onDismissRequest = {submitted = true}
+            ) {
+                ElevatedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(all = 10.dp)
+                        .align(Alignment.Center),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                    shape = MaterialTheme.shapes.extraLarge,
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                ) {
+                    Column(modifier = Modifier.padding(all = 20.dp)) {
+                        Text("Berhasil", color = Color.Gray, fontSize = 30.sp)
+                        Spacer(modifier = Modifier.height(40.dp))
+                        Text("Nama : $nama",color = Color.Gray, fontSize = 15.sp)
+                        Text("Asal : $asal",color = Color.Gray, fontSize = 15.sp)
+                        Text("Tanggal Lahir : $tgl",color = Color.Gray, fontSize = 15.sp)
+                        Text("RT : $rt",color = Color.Gray, fontSize = 15.sp)
+                        Text("RW : $rw",color = Color.Gray, fontSize = 15.sp)
+                        Text("Umur : $umur",color = Color.Gray, fontSize = 15.sp)
+                        Text("Jenis Kelamin : $jk",color = Color.Gray, fontSize = 15.sp)
+                        Spacer(Modifier.height(30.dp))
+                        Column(Modifier.padding(start = 190.dp),verticalArrangement = Arrangement.Bottom) {
+                            Button(
+                                onClick = {submitted = false},
+                                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.placeholder))
+                            ) {
+                                Text("OK")
+                            }
+                        }
+                    }
+                }
+            }
+        }
         if (showNumberPicker){
             AlertDialog(
                 onDismissRequest = {showNumberPicker = false},
