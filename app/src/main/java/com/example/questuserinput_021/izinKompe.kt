@@ -331,6 +331,42 @@ fun FormRegistrasi(modifier: Modifier)
                         Text(stringResource(R.string.submit))
                     }
                     Spacer(Modifier.height(height = 50.dp))
+                }
+            }
+        }
+
+        if (showNumberPicker){
+            AlertDialog(
+                onDismissRequest = {showNumberPicker = false},
+                title = {Text(text = "Pilih Umur Anda")},
+                text = {
+                    AndroidView(
+                        factory = { context ->
+                            NumberPicker(context).apply {
+                                value = intUmur
+                                minValue = 0
+                                maxValue = 100
+                                setOnValueChangedListener { _, _, newVal ->
+                                    intUmur = newVal
+                                }
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                            .height(height = 150.dp)
+                    )
+                },
+                confirmButton = {
+                    TextButton(onClick = { showNumberPicker = false }){
+                        Text("Ok")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showNumberPicker = false }){
+                        Text("Cancel")
+                    }
+                }
+            )
+        }
 
         if (showDatePicker) {
             DatePickerDialog(
