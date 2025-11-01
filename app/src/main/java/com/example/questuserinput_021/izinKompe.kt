@@ -114,6 +114,25 @@ fun FormRegistrasi(modifier: Modifier)
                 .fillMaxSize(),
             contentScale = ContentScale.Crop
         )
-
+        Column(modifier = Modifier
+            .padding(top = 70.dp)
+            .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = stringResource(id = R.string.title),
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold
+            )
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .padding(all = 20.dp)
+                    .alpha(0.93f),
+                shape = MaterialTheme.shapes.extraLarge,
+                colors = CardDefaults.cardColors(containerColor = Color.White),
+                elevation = CardDefaults.cardElevation(defaultElevation = 50.dp)
+            ) {}
+        }
     }
 }
