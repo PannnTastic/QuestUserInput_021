@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">QuestUserInput_021</string>
     <string name="submit">Submit</string>
+    <string name="title">Form Registrasi</string>
+    <string name="nama">Nama Lengkap</string>
+    <string name="asal">Asal Kota</string>
+    <string name="tgl_lahir">Tgl Lahir</string>
+    <string name="rt">RT</string>
+    <string name="rw">RW</string>
+    <string name="umur">Umur</string>
+    <string name="jk">Jenis Kelamin</string>
+    <string name="check">Saya setuju dengan syarat dan ketentuan berlaku</string>
+
 </resources>
