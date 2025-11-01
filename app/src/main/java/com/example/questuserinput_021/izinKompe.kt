@@ -174,7 +174,183 @@ fun FormRegistrasi(modifier: Modifier)
                             unfocusedLabelColor = Color.Gray
                         )
                     )
+                    Row(
+                        modifier = Modifier
+//                            .fillMaxWidth()
+                            .padding(bottom = 15.dp, start = 20.dp, end = 20.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        OutlinedTextField(
+                            value = selectedDate,
+                            singleLine = true,
+                            shape = MaterialTheme.shapes.large,
+                            onValueChange = { },
+                            readOnly = true,
+                            label = {
+                                Text(stringResource(id = R.string.tgl_lahir))
+                            },
+                            trailingIcon = {
+                                IconButton(
+                                    onClick = { showDatePicker = !showDatePicker }
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.DateRange,
+                                        contentDescription = "Select Date"
+                                    )
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                                .clickable(enabled = true,onClick = { showDatePicker = true }),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = colorResource(id = R.color.placeholder),
+                                unfocusedBorderColor = Color.Gray,
+                                unfocusedLabelColor = Color.Gray
+                            )
+                        )
+                        OutlinedTextField(
+                            value = txtRt,
+                            singleLine = true,
+                            shape = MaterialTheme.shapes.large,
+                            modifier = Modifier
+                                .width(width = 60.dp),
+//                                .padding(top = 7.dp),
+                            onValueChange = {
+                                txtRt = it
+                            },
+                            label = {
+                                Text(stringResource(id = R.string.rt))
+                            },
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = colorResource(id = R.color.placeholder),
+                                unfocusedBorderColor = Color.Gray,
+                                unfocusedLabelColor = Color.Gray
+                            )
+                        )
+                        VerticalDivider(
+                            thickness = dimensionResource(id = R.dimen.thin_divider),
+                            modifier = Modifier.padding(top = 16.dp, bottom = 10.dp).height(height = 40.dp)
 
+                        )
+                        OutlinedTextField(
+                            value = txtRw,
+                            singleLine = true,
+                            shape = MaterialTheme.shapes.large,
+                            modifier = Modifier
+                                .width(width = 60.dp),
+//                                .padding(top = 7.dp),
+                            onValueChange = {
+                                txtRw = it
+                            },
+                            label = {
+                                Text(stringResource(id = R.string.rw))
+                            },
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = colorResource(id = R.color.placeholder),
+                                unfocusedBorderColor = Color.Gray,
+                                unfocusedLabelColor = Color.Gray
+                            )
+
+                        )
+                    }
+
+                    OutlinedTextField(
+                        placeholder = {
+                            Text("0")
+                        },
+                        readOnly = true,
+                        value = if (intUmur > 0) intUmur.toString() else "",
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        singleLine = true,
+                        shape = MaterialTheme.shapes.large,
+                        modifier = Modifier
+//                            .width(width = 250.dp)
+                            .fillMaxWidth(1f)
+                            .padding(bottom = 15.dp, start = 20.dp, end = 20.dp)
+                            .clickable(onClick = {showNumberPicker = !showNumberPicker}, enabled = showNumberPicker),
+                        label = { Text(text = stringResource(id = R.string.umur)) },
+                        onValueChange = {
+                            intUmur = it.toIntOrNull() ?: 0
+                        },
+                        trailingIcon = {
+                            Icon(
+                                painter = painterResource(android.R.drawable.ic_menu_add),
+                                contentDescription = "Select Number",
+                                modifier = Modifier.clickable { showNumberPicker = true }
+                            )
+                        },
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = colorResource(id = R.color.placeholder),
+                            unfocusedBorderColor = Color.Gray,
+                            unfocusedLabelColor = Color.Gray
+                        )
+                    )
+                    Text(stringResource(R.string.jk),
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(start = 30.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row {
+                        gender.forEach { item ->
+                            Row(
+                                modifier = Modifier
+                                    .selectable(
+                                        selected = txtJk == item,
+                                        onClick = { txtJk = item }
+                                    ), verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = txtJk == item,
+                                    onClick = { txtJk = item }
+                                )
+                                Text(text = item)
+                            }
+                        }
+                    }
+                    Row(modifier = Modifier.padding(start = 60.dp, end = 40.dp)) {
+                        Checkbox(checked = check, onCheckedChange = { check = it })
+                        Text(stringResource(R.string.check),
+                            fontSize = 15.sp,
+                            color = Color.Gray
+                        )
+                    }
+                    Spacer(Modifier.height(height = 50.dp))
+                    Button(enabled = check,
+                        onClick = {
+                            nama = txtNama
+                            asal = txtAsal
+                            rt = txtRt
+                            rw = txtRw
+                            umur = intUmur.toString()
+                            jk = txtJk
+                            tgl = selectedDate
+                            submitted = !submitted
+
+                        },
+                        modifier = Modifier.width(width = 150.dp).height(50.dp)) {
+                        Text(stringResource(R.string.submit))
+                    }
+                    Spacer(Modifier.height(height = 50.dp))
+
+        if (showDatePicker) {
+            DatePickerDialog(
+                onDismissRequest = { showDatePicker = false },
+                confirmButton = {
+                    TextButton(onClick = { showDatePicker = false }) {
+                        Text("OK")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showDatePicker = false }) {
+                        Text("Cancel")
+                    }
+                }
+            ) {
+                DatePicker(
+                    state = datePickerState,
+                    showModeToggle = false
+                )
+            }
         }
     }
 }
