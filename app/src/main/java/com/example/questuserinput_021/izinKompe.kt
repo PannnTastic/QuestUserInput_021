@@ -104,6 +104,16 @@ fun FormRegistrasi(modifier: Modifier)
 
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
+    Box(modifier = Modifier
+        .fillMaxSize()
+    ){
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = "Bacground Image",
+            modifier = Modifier
+                .fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
 
-
+    }
 }
