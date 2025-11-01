@@ -132,7 +132,49 @@ fun FormRegistrasi(modifier: Modifier)
                 shape = MaterialTheme.shapes.extraLarge,
                 colors = CardDefaults.cardColors(containerColor = Color.White),
                 elevation = CardDefaults.cardElevation(defaultElevation = 50.dp)
-            ) {}
+            ) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    OutlinedTextField(
+                        value = txtNama,
+                        singleLine = true,
+                        shape = MaterialTheme.shapes.large,
+                        modifier = Modifier
+//                            .width(width = 250.dp)
+                            .fillMaxWidth(1f)
+                            .padding(bottom = 15.dp, start = 20.dp, end = 20.dp, top = 40.dp),
+                        label = { Text(text = stringResource(id = R.string.nama)) },
+                        onValueChange = {
+                            txtNama = it
+                        },
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = colorResource(id = R.color.placeholder),
+                            unfocusedBorderColor = Color.Gray,
+                            unfocusedLabelColor = Color.Gray
+                        )
+                    )
+                    OutlinedTextField(
+                        value = txtAsal,
+                        singleLine = true,
+                        shape = MaterialTheme.shapes.large,
+                        modifier = Modifier
+//                            .width(width = 250.dp)
+                            .fillMaxWidth(1f)
+                            .padding(bottom = 15.dp, start = 20.dp, end = 20.dp),
+                        label = { Text(text = stringResource(id = R.string.asal)) },
+                        onValueChange = {
+                            txtAsal = it
+                        },
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = colorResource(id = R.color.placeholder),
+                            unfocusedBorderColor = Color.Gray,
+                            unfocusedLabelColor = Color.Gray
+                        )
+                    )
+
         }
     }
 }
