@@ -74,5 +74,36 @@ import androidx.compose.ui.window.Dialog
 @Composable
 fun FormRegistrasi(modifier: Modifier)
 {
+    var txtNama by remember { mutableStateOf("") }
+    var txtAsal by remember { mutableStateOf("") }
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    val selectedDate = datePickerState.selectedDateMillis?.let {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = it
+        "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)}"
+    } ?: ""
+
+    var txtRw by remember { mutableStateOf("") }
+    var txtRt by remember { mutableStateOf("") }
+    var intUmur by remember { mutableIntStateOf(0)  }
+    var showNumberPicker by remember { mutableStateOf(false) }
+    var txtJk by remember { mutableStateOf("") }
+    var check by remember { mutableStateOf(false) }
+
+
+    var nama by remember { mutableStateOf("") }
+    var asal by remember { mutableStateOf("") }
+    var rt by remember { mutableStateOf("") }
+    var rw by remember { mutableStateOf("") }
+    var umur by remember { mutableStateOf("") }
+    var jk by remember { mutableStateOf("") }
+    var tgl by remember { mutableStateOf("") }
+    var submitted by remember { mutableStateOf(false) }
+
+
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
+
+
 
 }
